@@ -1,3 +1,5 @@
+import PostService from "../PostService";
+
 export function setupPostComponent(element) {
     //datas
     let counter = 0
@@ -13,15 +15,14 @@ export function setupPostComponent(element) {
     const created = () => {
         async function get(){
             try{
-                console.log('teste')
-                //posts = await PostService.getPosts();
+                posts = await PostService.getPosts();
+                console.log(posts)
             } catch(err){
                 console.log(err)
             }
         }
         return get();
     }
-
 
     //mounted
     setCounter(0);
