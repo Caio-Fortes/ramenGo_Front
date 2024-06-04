@@ -1,11 +1,14 @@
 import { defineConfig } from 'vite'
+import path from 'path'
 
 export default defineConfig({
-  build: {
-    lib: {
-      entry: './lib/main.js',
-      name: 'Counter',
-      fileName: 'counter'
+  outputDir: path.resolve(__dirname, '../server/public'),
+  transpileDependencies: true,
+  server:{
+    proxy:{
+      '/api':{
+        target: 'http://localhost:5000'
+      }
     }
   }
 })
